@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mongodb": "^6.10.0",
+    "mongoose": "^8.8.1",
+    "node-pg-migrate": "^7.7.1",
+    "pg": "^8.13.1"
+  },
+  "scripts": {
+    "migrate": "node-pg-migrate up -j ts -d DATABASE_URL --envPath .env -m api/migrations",
+    "Con": "node Connect.js",
+    "start": "node server.js"
+  },
+  "name": "for_tz_hr",
+  "version": "1.0.0",
+  "main": "Connect.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
