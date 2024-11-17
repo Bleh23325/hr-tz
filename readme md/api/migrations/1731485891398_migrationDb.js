@@ -45,7 +45,6 @@ module.exports =  {up: (pgm) => {
         date_of_issue: {type:'date', notNull: false},
         department_code:{type:'integer', notNull: false},
         who_issue: {type:'character(50)', notNull: false},
-        photo: {type:'int', notNull: false},
         worker:{type:'integer', notNull: false},
     });
     // таблица с работниками
@@ -101,10 +100,23 @@ module.exports =  {up: (pgm) => {
         change_department: {type:'character(30)', notNull: false},
         change_worker: {type:'character(30)', notNull: false},
         change_personel_operation: {type:'character(30)', notNull: false},
+    });
+    pgm.createTable('photos', {
+        id_photo: {type: 'serial', primaryKey: true},
+        photo: {type:'bytea', notNull: false},
+        passport: {type:'integer', notNull: false},
     })
 
 // Связи
-
+    //связь поспорта/фото пасспорта
+    pgm.addConstraint('photos', 'fk_photos_passport', {
+        foreignKeys: [{
+            columns: 'passport',
+            references: 'passport(id_passport)',
+            onDelete: 'SET NULL',
+            onUpdate: 'CASCADE'  
+        }]
+    })
     // связь таблиц keys/roots
     pgm.addConstraint('keys', 'fk_keys_roots', {
         foreignKeys: [{
@@ -228,5 +240,6 @@ down: (pgm) => {
     pgm.dropTable('hiring');
     pgm.dropTable('personel_operations');
     pgm.dropTable('histori_of_changes');
+    pgm.dropTable('photos');
 }
 }

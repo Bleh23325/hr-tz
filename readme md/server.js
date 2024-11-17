@@ -10,6 +10,7 @@ const keysRouter = require('./api/routes/keys.roures')
 const historiOfChangesRouter = require('./api/routes/histori_of_changes.route')
 const personelOperationsRouter = require('./api/routes/personalOperation.route')
 const passportRouter = require('./api/routes/passport.routes')
+const photosRouter = require('./api/routes/photo.routes')
 // задаём порт. значение после || задаёт порт в ручную, елси его нет в env
 const PORT = process.env.PORT || 2508
 const  app = express()
@@ -50,6 +51,8 @@ app.use('/api', personelOperationsRouter)
 // для паспорта
 app.use('/api', passportRouter)
 
+// для фото паспорта
+app.use('/api', photosRouter)
 
 //вывод порта в консоль
 app.listen(PORT, () => console.log(`Порт сервера: http://localhost:${PORT}`))
