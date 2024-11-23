@@ -1,0 +1,7 @@
+# Файлы, игнорируемые по умолчанию
+/shelf/
+/workspace.xml
+/.env
+/node_modules
+# Запросы HTTP-клиента в редакторе
+/httpRequests/
